@@ -21,6 +21,9 @@ jobs:
           distribution: 'temurin'
           cache: 'maven'
 
+      - name: Make Maven Wrapper executable
+        run: chmod +x ./mvnw
+
       - name: Build with Maven (Skip Tests)
         run: ./mvnw clean package -DskipTests --no-transfer-progress # Package the JAR
 
