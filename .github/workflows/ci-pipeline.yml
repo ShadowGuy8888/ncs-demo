@@ -1,0 +1,30 @@
+# .github/workflows/ci-pipeline.yml
+name: CI Pipeline
+
+on: # Trigger on push to main or any pull request targeting main
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  test:
+    name: Build and Test
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Checkout the code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # 2. Set up Java 17
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          java-version: '24'
+          distribution: 'temurin' # Eclipse Temurin is a popular OpenJDK distribution
+          cache: 'maven' # Caches Maven dependencies to speed up future runs
+
+      # 3. Build and run tests with Maven
+      - name: Build and Test with Maven
+        run: ./mvnw test --no-transfer-progress # --no-transfer-progress reduces log noise
