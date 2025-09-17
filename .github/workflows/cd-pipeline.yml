@@ -36,5 +36,5 @@ jobs:
           environment_name: Ncs-demo-env # Find this in your EB dashboard
           version_label: github-${{ github.sha }} # Unique label for this deployment
           region: ap-southeast-2 # Change this to your AWS region (e.g., ap-southeast-1)
-          deployment_package: target/demo-0.0.1-SNAPSHOT.jar # Path to the JAR we built
+          deployment_package: target/ncs-demo-0.0.1-SNAPSHOT.jar # Path to the JAR we built
           wait_for_environment_recovery: 300 # Wait 300 seconds for deployment to finish
